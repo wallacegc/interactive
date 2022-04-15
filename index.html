@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="css/index.css" rel="stylesheet" />
+    </head>
+    <body onclick="gerarPin()">
+        <div id="reporter" class="reporter"></div>
+        <img src="img/mao.jpg" alt="Map City" class="map">
+        <div id="pin" class="pin">ADD PONTO</div>
+    </body>
+</html>
+<script>
+    var reporter = document.getElementById('reporter');
+    window.addEventListener('mousemove', function(e) {
+        var mouse = {
+            page: {
+                x: e.pageX,
+                y: e.pageY
+            },
+            client: {
+                x: e.clientX,
+                y: e.clientY
+            }
+        };
+        reporter.innerHTML = ['page', 'client'].map(function(type) {
+            return [type, ,'x:', mouse[type].x, 'y:', mouse[type].y, '\n'].join(' ');
+        }).join(' | ');
+    });
+
+</script>
+<script src="js/pin.js"></script>
